@@ -6,9 +6,9 @@ export const Feedback = () => {
 };
 
 export class Counter extends Component {
-  static defaultProps = {
-    step: 1,
-    initialValue: 0,
+  static props = {
+    // step: 5,
+    // initialValue: 0,
   };
 
   constructor(props) {
@@ -19,18 +19,18 @@ export class Counter extends Component {
     this.state = {
       value: this.props.initialValue,
   }
-
-    
-    };
+  };
 
   handleIncrement(evt) {
-    console.log('Increment button was clicked!', evt); // працює
-    console.log('this.props: ', this.props); // Error: cannot read props of undefined
+    this.setState((state, props) => ({
+      value: state.value + props.step,
+    }));
   }
 
   handleDecrement(evt) {
-    console.log('Decrement button was clicked!', evt); // працює
-    console.log('this.props: ', this.props); // Error: cannot read props of undefined
+        this.setState((state, props) => ({
+          value: state.value - props.step,
+        }));
   }
 
   render() {
