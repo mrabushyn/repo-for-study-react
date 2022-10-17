@@ -7,8 +7,8 @@ export const Feedback = () => {
 
 export class Counter extends Component {
   static props = {
-    // step: 5,
-    // initialValue: 0,
+    step: 5,
+    initialValue: 0,
   };
 
   constructor(props) {
@@ -23,7 +23,7 @@ export class Counter extends Component {
 
   handleIncrement(evt) {
     this.setState((state, props) => ({
-      value: state.value + props.step,
+      value: state.value + props.step
     }));
   }
 
@@ -38,7 +38,7 @@ export class Counter extends Component {
 
     return (
       <div className={css.main}>
-        <span>{this.state.value}</span>
+            <span>{this.state.value}</span>
 
         <button
           type="button"
