@@ -53,7 +53,7 @@ export class FeedbackDZ extends Component {
 
   countPositiveFeedbackPercentage() {
     this.setState(state => ({
-      valueForPercentage: (state.valueForGood / state.valueForTotal) * 100,
+      valueForPercentage: ((state.valueForGood / state.valueForTotal) * 100).toFixed(0),
     }));
   }
 
