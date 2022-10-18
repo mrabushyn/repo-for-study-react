@@ -2,7 +2,15 @@
   list-style: none;
 }
 
-
 .list {
   font-size: 28px;
+}
+
+.buttons {
+margin: 15px;
+font-size: 28px;
+}
+
+.title{
+  font-size: 28px ;
 }

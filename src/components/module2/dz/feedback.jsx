@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Statistics } from './Statistics';
+import { FeedbackOptions } from './FeedbackOptions';
+import { Section } from './Section';
+import { Notification } from './Notification';
+
 // import css from './feedback.module.css';
 
 export class FeedbackDZ extends Component {
@@ -30,6 +34,7 @@ export class FeedbackDZ extends Component {
     this.countTotalFeedback();
     this.countPositiveFeedbackPercentage();
   }
+
   handleIncrementForNeutral() {
     this.setState((state, props) => ({
       valueForNeutral: state.valueForNeutral + props.step,
@@ -37,6 +42,7 @@ export class FeedbackDZ extends Component {
     this.countTotalFeedback();
     this.countPositiveFeedbackPercentage();
   }
+
   handleIncrementForBad() {
     this.setState((state, props) => ({
       valueForBad: state.valueForBad + props.step,
@@ -63,40 +69,27 @@ export class FeedbackDZ extends Component {
 
   render() {
     return (
-      <div className="div">
-        <h2 className="h2">Please leave feedback</h2>
+      <div >
 
-        <ul className="ul">
-          <button
-            type="button"
-            className="button"
-            onClick={this.handleIncrementForGood}
-          >
-            Good
-          </button>
-          <button
-            type="button"
-            className="button"
-            onClick={this.handleIncrementForNeutral}
-          >
-            Neutral
-          </button>
-          <button
-            type="button"
-            className="button"
-            onClick={this.handleIncrementForBad}
-          >
-            Bad
-          </button>
-        </ul>
-        <h2 className="h2">Statistics</h2>
-        <Statistics
-          good={this.state.valueForGood}
-          neutral={this.state.valueForNeutral}
-          bad={this.state.valueForBad}
-          total={this.state.valueForTotal}
-          positivePercentage={this.state.valueForPercentage}
-        />
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            good={this.handleIncrementForGood}
+            neutral={this.handleIncrementForNeutral}
+            bad={this.handleIncrementForBad}
+          />
+        </Section>
+        
+        <Section title="Statistics">
+          <Notification message="There is no feedback"></Notification>
+          <Statistics 
+            good={this.state.valueForGood}
+            neutral={this.state.valueForNeutral}
+            bad={this.state.valueForBad}
+            total={this.state.valueForTotal}
+            positivePercentage={this.state.valueForPercentage}
+
+          />
+        </Section>
       </div>
     );
   }
