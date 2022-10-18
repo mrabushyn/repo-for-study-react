@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Statistics } from './Statistics';
 // import css from './feedback.module.css';
 
 export class FeedbackDZ extends Component {
@@ -53,7 +54,10 @@ export class FeedbackDZ extends Component {
 
   countPositiveFeedbackPercentage() {
     this.setState(state => ({
-      valueForPercentage: ((state.valueForGood / state.valueForTotal) * 100).toFixed(0),
+      valueForPercentage: (
+        (state.valueForGood / state.valueForTotal) *
+        100
+      ).toFixed(0),
     }));
   }
 
@@ -85,26 +89,14 @@ export class FeedbackDZ extends Component {
             Bad
           </button>
         </ul>
-
         <h2 className="h2">Statistics</h2>
-        <ul className="ul">
-          <li className="li">
-            Good:
-            <span>{this.state.valueForGood}</span>
-          </li>
-          <li className="li">
-            Neutral:<span>{this.state.valueForNeutral}</span>
-          </li>
-          <li className="li">
-            Bad:<span>{this.state.valueForBad}</span>
-          </li>
-          <li className="li">
-            Total:<span>{this.state.valueForTotal}</span>
-          </li>
-          <li className="li">
-            Positive feedback:<span>{this.state.valueForPercentage}%</span>
-          </li>
-        </ul>
+        <Statistics
+          good={this.state.valueForGood}
+          neutral={this.state.valueForNeutral}
+          bad={this.state.valueForBad}
+          total={this.state.valueForTotal}
+          positivePercentage={this.state.valueForPercentage}
+        />
       </div>
     );
   }

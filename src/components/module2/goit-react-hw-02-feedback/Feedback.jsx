@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import css from './Feedback.module.css'
+import css from './Feedback.module.css';
 
 export const Feedback = () => {
   return <div></div>;
@@ -18,19 +18,19 @@ export class Counter extends Component {
 
     this.state = {
       value: this.props.initialValue,
+    };
   }
-  };
 
   handleIncrement(evt) {
     this.setState((state, props) => ({
-      value: state.value + props.step
+      value: state.value + props.step,
     }));
   }
 
   handleDecrement(evt) {
-        this.setState((state, props) => ({
-          value: state.value - props.step,
-        }));
+    this.setState((state, props) => ({
+      value: state.value - props.step,
+    }));
   }
 
   render() {
@@ -38,7 +38,7 @@ export class Counter extends Component {
 
     return (
       <div className={css.main}>
-            <span>{this.state.value}</span>
+        <span>{this.state.value}</span>
 
         <button
           type="button"
