@@ -4,7 +4,6 @@ import { FeedbackOptions } from './FeedbackOptions';
 import { Section } from './Section';
 import { Notification } from './Notification';
 
-// import css from './feedback.module.css';
 
 export class FeedbackDZ extends Component {
   static props = {
@@ -69,8 +68,7 @@ export class FeedbackDZ extends Component {
 
   render() {
     return (
-      <div >
-
+      <div>
         <Section title="Please leave feedback">
           <FeedbackOptions
             good={this.handleIncrementForGood}
@@ -78,17 +76,20 @@ export class FeedbackDZ extends Component {
             bad={this.handleIncrementForBad}
           />
         </Section>
-        
-        <Section title="Statistics">
-          <Notification message="There is no feedback"></Notification>
-          <Statistics 
-            good={this.state.valueForGood}
-            neutral={this.state.valueForNeutral}
-            bad={this.state.valueForBad}
-            total={this.state.valueForTotal}
-            positivePercentage={this.state.valueForPercentage}
 
-          />
+        <Section title="Statistics">
+
+          {this.state.valueForTotal === 0 ? (
+            <Notification message="There is no feedback"></Notification>
+          ) : (
+            <Statistics
+              good={this.state.valueForGood}
+              neutral={this.state.valueForNeutral}
+              bad={this.state.valueForBad}
+              total={this.state.valueForTotal}
+              positivePercentage={this.state.valueForPercentage}
+            />
+          )}
         </Section>
       </div>
     );

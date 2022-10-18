@@ -1,9 +1,9 @@
-// import css from './feedback.module.css';
+import css from './feedback.module.css';
 
 export const Notification = ({ message }) => {
   return (
     <span>
-      <h3>{message}</h3>
+      <h3 className={css.notification}>{message}</h3>
     </span>
   );
 };
