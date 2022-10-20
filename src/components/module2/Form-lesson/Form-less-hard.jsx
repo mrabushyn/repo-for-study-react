@@ -105,7 +105,7 @@ const INITIAL_STATEE = {
   login: '',
   email: '',
   password: '',
-  agreed: true,
+  agreed: false,
 };
 
 
@@ -119,6 +119,13 @@ export class SignUpFormCheckBox extends Component {
     // Якщо тип елемента – checkbox, беремо значення checked,
     // в іншому випадку – value
     this.setState({ [name]: type === 'checkbox' ? checked : value });
+
+    this.setState({
+      // [name]:
+      agreed: evt.currentTarget.checked,
+      // ? (this.state.agreed = 'false')
+      // : (this.state.agreed = 'true'),
+    });
   };
 
   handleSubmit = e => {
@@ -149,6 +156,120 @@ export class SignUpFormCheckBox extends Component {
             checked={agreed}
             onChange={this.handleChange}
           />
+        </label>
+
+        <button type="submit" disabled={!agreed}>
+          Sign up as {login}
+        </button>
+      </form>
+    );
+  }
+}
+
+
+// _____________________________________RADIO-BTN__________________________________
+
+
+
+// Використовуємо Enumerable, щоб не створювати антипатерн "магічні рядки"
+
+const Gender = {
+  MALE: "male",
+  FEMALE: "female",
+};
+
+const INITIAL_STATE_RADIO = {
+  login: "",
+  email: "",
+  password: "",
+  agreed: false,
+  gender: null,
+};
+
+export class SignUpFormRadio extends Component {
+  state = {
+    ...INITIAL_STATE_RADIO,
+  };
+
+  /*... */
+
+  render() {
+    const { login, email, password, agreed, gender } = this.state;
+
+    return (
+      <form onSubmit={this.handleSubmit}>
+        {/* ... */}
+
+        <section>
+          <h2>Choose your gender</h2>
+          <label>
+            Male
+            <input
+              type="radio"
+              checked={gender === Gender.MALE}
+              name="gender"
+              value={Gender.MALE}
+              onChange={this.handleChange}
+            />
+          </label>
+          <label>
+            Female
+            <input
+              type="radio"
+              checked={gender === Gender.FEMALE}
+              name="gender"
+              value={Gender.FEMALE}
+              onChange={this.handleChange}
+            />
+          </label>
+        </section>
+
+        <button type="submit" disabled={!agreed}>
+          Sign up as {login}
+        </button>
+      </form>
+    );
+  }
+}
+
+// _____________________________________SELECT__________________________________
+
+
+
+
+const INITIAL_STATE_SELECT = {
+  login: '',
+  email: '',
+  password: '',
+  agreed: false,
+  gender: null,
+  age: '',
+};
+
+export class SignUpFormSelect extends Component {
+  state = {
+    ...INITIAL_STATE_SELECT,
+  };
+
+  /* ... */
+
+  render() {
+    const { login, email, password, agreed, gender, age } = this.state;
+
+    return (
+      <form onSubmit={this.handleSubmit}>
+        {/* ... */}
+
+        <label>
+          Choose your age
+          <select name="age" value={age} onChange={this.handleChange}>
+            <option value="" disabled>
+              ...
+            </option>
+            <option value="18-25">18-25</option>
+            <option value="26-35">26-35</option>
+            <option value="36+">36+</option>
+          </select>
         </label>
 
         <button type="submit" disabled={!agreed}>

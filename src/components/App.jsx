@@ -10,6 +10,8 @@ import { SignUpForm } from './module2/Form-lesson/Form-lessonClass';
 import { SignUpFormHard } from './module2/Form-lesson/Form-less-hard';
 import { Form } from './module2/Form-lesson/Form-less-hard';
 import { SignUpFormCheckBox } from './module2/Form-lesson/Form-less-hard';
+import { SignUpFormRadio } from './module2/Form-lesson/Form-less-hard';
+import { SignUpFormSelect } from './module2/Form-lesson/Form-less-hard';
 
 
 export const App = () => {
@@ -27,6 +29,8 @@ export const App = () => {
       <SignUpFormHard onSubmit={values => console.log(values)} />,
       <Form onSubmit={values => console.log(values)} />,
       <SignUpFormCheckBox onSubmit={values => console.log(values)} />,
+      <SignUpFormRadio onSubmit={values => console.log(values)} />,
+      <SignUpFormSelect onSubmit={values => console.log(values)} />,
     </div>
   );
 };
