@@ -26,6 +26,8 @@ export class LoginForm extends Component {
     const login = form.elements.login.value;
     const password = form.elements.password.value;
     this.props.onSubmit({ login, password, form });
+        console.log(login, password, form);
+        console.log('asdasdasdasdas');
     form.reset();
   };
 
